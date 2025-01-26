@@ -31,11 +31,15 @@ jobs:
 
     - name: Build with Gradle
       run: ./gradlew build
+
+    - name: Debug build output
+      run: ls -R build/libs
     
     - name: Build & push Docker image
       uses: mr-smithers-excellent/docker-build-push@v3
       with:
         image: jeraldinnemg/java-app
         registry: docker.io
+        dockerfile: Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
