@@ -34,11 +34,12 @@ jobs:
     - name: Generate version tag
       id: version
       run: |
-        VERSION=$(git describe --tags --abbrev=0 || echo "v0") # get latest tag or default to v0
+        # Check if there are any tags. If not, default to v0
+        VERSION=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0") 
         VERSION_NUMBER=$(echo $VERSION | sed 's/v//g')  # Remove 'v' if present
         NEW_VERSION=$((VERSION_NUMBER + 1)) # Increment version by 1
         echo "VERSION=app-java-v$NEW_VERSION" >> $GITHUB_ENV
-        
+
     - name: Build & push Docker image
       uses: mr-smithers-excellent/docker-build-push@v3
       with:
