@@ -35,15 +35,9 @@ jobs:
       id: version
       run: |
         # Check if there are any tags. If not, default to v0
-        if git tag | wc -l > /dev/null; then
-          # If there are tags, get the latest one and increment it
-          VERSION=$(git describe --tags --abbrev=0)
-          VERSION_NUMBER=$(echo $VERSION | sed 's/v//g')  # Remove 'v' if present
-          NEW_VERSION=$((VERSION_NUMBER + 1)) # Increment version by 1
-        else
-          # If no tags exist, tag will start at v1
-          NEW_VERSION=1
-        fi
+        VERSION=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0") 
+        VERSION_NUMBER=$(echo $VERSION | sed 's/v//g')  # Remove 'v' if present
+        NEW_VERSION=$((VERSION_NUMBER + 1)) # Increment version by 1
         echo "VERSION=app-java-v$NEW_VERSION" >> $GITHUB_ENV
 
     - name: Build & push Docker image
