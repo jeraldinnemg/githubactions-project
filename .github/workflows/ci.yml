@@ -44,6 +44,7 @@ jobs:
         # Create a new version tag (e.g., app-java-v2)
         echo "VERSION=app-java-v$NEW_VERSION" >> $GITHUB_ENV
         echo "New Version Tag: app-java-v$NEW_VERSION" # Debugging step to verify
+        
       id: version
 
     - name: Build & push Docker image
@@ -54,4 +55,4 @@ jobs:
         dockerfile: Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        tags: ${{ env.VERSION }} 
+        tag: ${{ env.VERSION }} 
