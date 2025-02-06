@@ -49,7 +49,32 @@ my-project/
 ```
 
 ---
+## Application
+- Github Actions![Github Actions](images/github-actions.png)
+- Dockerhub Application![dockerhub](images/dockerhub.png)
+- Docker Desktop Container App![Docker Desktop](images/docker-desktop.png)
+- JAVA App![Java App](images/java-app.png)
 
+---
+
+
+## 🏃 How to Run the App Locally
+
+To run this Java application using Docker, follow these steps:
+
+1. **Pull the latest Docker image** from your DockerHub repository:
+   ```sh
+   docker pull jeraldinnemg/app-java-v2```
+2. **Run the application container:** 
+   ```sh
+   docker run --platform linux/amd64 -d -p 8080:8080 --name java-app jeraldinnemg/java-app:app-java-v2```
+3. **Verify that the container is running:** 
+   ```sh
+   docker ps```
+4. **Test the application:** 
+Open your browser and go to: http://localhost:8080/api/status
+
+---
 ## 🔗 Related Resources
 - [Github Actions Tutorial](https://www.youtube.com/watch?v=R8_veQiYBjI)
 - [GitHub Actions Documentation](https://docs.github.com/en/actions)
