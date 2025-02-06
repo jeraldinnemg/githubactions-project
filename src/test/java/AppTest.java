@@ -11,6 +11,6 @@ public class AppTest {
         // Call the getStatus method in MyController
         String result = myController.getStatus();
 
-        assertEquals("App is running!", result);
+        assertEquals("App v2 is running!", result);
     }
 }
