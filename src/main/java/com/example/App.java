@@ -1,21 +1,12 @@
 package com.example;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@RestController
-@RequestMapping("/api") // Base path: http://localhost:8080/api
-public class MyController {
+@SpringBootApplication
+public class App {
 
-    @GetMapping("/status") // Accessible at: http://localhost:8080/api/status
-    public String getStatus() {
-        return "App is running!";
-    }
-
-    @GetMapping("/") // Accessible at: http://localhost:8080/
-    public String home() {
-        return "Welcome to the Java App!";
+    public static void main(String[] args) {
+        SpringApplication.run(App.class, args);
     }
 }
-
