@@ -1,27 +1,21 @@
 package com.example;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import javax.annotation.PostConstruct;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@SpringBootApplication
-public class App {
+@RestController
+@RequestMapping("/api") // Base path: http://localhost:8080/api
+public class MyController {
 
-    public static void main(String[] args)
-    {
-        SpringApplication.run(App.class, args);
-    }
-
-    @PostConstruct
-    public void init()
-    {
-        Logger log = LoggerFactory.getLogger(App.class);
-        log.info("Java app started");
-    }
-
+    @GetMapping("/status") // Accessible at: http://localhost:8080/api/status
     public String getStatus() {
-        return "OK";
+        return "App is running!";
+    }
+
+    @GetMapping("/") // Accessible at: http://localhost:8080/
+    public String home() {
+        return "Welcome to the Java App!";
     }
 }
+
